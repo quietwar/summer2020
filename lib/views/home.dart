@@ -1,29 +1,46 @@
+// import 'dart:js';
+import 'package:Summer2020/helper_functions/helper_functions.dart';
+import 'package:Summer2020/services/database.dart';
+import 'package:Summer2020/views/homepage.dart';
+// import 'package:Summer2020/widgets/widget.dart';
 import 'package:flutter/material.dart';
-import 'package:todowebappp/helper_functions/helper_functions.dart';
-import 'package:todowebappp/services/database.dart';
-import 'package:todowebappp/widgets/widget.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:Summer2020/views/myappbar.dart';
+  
+  
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+    return new MaterialApp(
+      title: 'Summer 2020',
+      home: new Home(),
+      darkTheme: new ThemeData.dark(),
+    );
+  }
+}
 
 class Home extends StatefulWidget {
-  String username;
-  final String userEmail;
-  Home({this.username, this.userEmail});
-
+  static const String id = 'home_screen';
   @override
   _HomeState createState() => _HomeState();
 }
 
-String uId = "gnpH1r191xOYLMIsIZgvxNSx5X53";
+//String uId = "gnpH1r191xOYLMIsIZgvxNSx5X53";
 
 class _HomeState extends State<Home> {
 
-  Stream taskStream;
+  @override
+//   Stream taskStream;
 
-  DatabaseServices databaseServices = new DatabaseServices();
+   DatabaseServices databaseServices = new DatabaseServices();
 
   String date;
   TextEditingController taskEdittingControler = new TextEditingController();
 
-  @override
+
+
+   
   void initState() {
 
     var now = DateTime.now();
@@ -31,160 +48,175 @@ class _HomeState extends State<Home> {
 
     databaseServices.getTasks(uId).then((val){
 
-      taskStream = val;
+     // taskStream = val;
       setState(() {});
 
     });
 
     super.initState();
   }
+   
+   
+  
 
-  Widget taskList(){
-
-    return StreamBuilder(
-      stream: taskStream,
-      builder: (context, snapshot){
-        return snapshot.hasData ?
-        ListView.builder(
-          padding: EdgeInsets.only(top: 16),
-          itemCount: snapshot.data.documents.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index){
-              return TaskTile(
-                snapshot.data.documents[index].data["isCompleted"],
-                snapshot.data.documents[index].data["task"],
-                snapshot.data.documents[index].documentID,
-              );
-            }) : Container();
-      },
-    );
-
-  }
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: Widgets().mainAppar(),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 24,vertical: 32),
-            width: 600,
-            child: Column(
-              children: [
-              Text("My Day", style: TextStyle(
-                fontSize: 18,
-              ),),
-              Text("$date"),
-                Row(
-                  children: [
-                  Expanded(
-                    child: TextField(
-                      controller: taskEdittingControler,
-                      decoration: InputDecoration(
-                        hintText: "task"
-                      ),
-                      onChanged: (val){
-                       // taskEdittingControler.text = val;
-                        setState(() {
-
-                        });
-                      },
-                    ),
-                  ),
-                  SizedBox(width: 6,),
-                  taskEdittingControler.text.isNotEmpty ?
-                  GestureDetector(
-                    onTap: (){
-
-                      Map<String, dynamic> taskMap = {
-                        "task" : taskEdittingControler.text,
-                        "isCompleted" : false
-                      };
-
-                      databaseServices.createTask(uId,taskMap);
-                      taskEdittingControler.text = "";
-                    },
-                      child: Container(
-                        padding: EdgeInsets
-                          .symmetric(horizontal: 12, vertical: 5),
-                          child: Text("ADD"))) : Container()
-                ],),
-
-                taskList()
-            ],),
+  Widget build(BuildContext context){
+    var cohorts = ["Oak7", "Oak8", "Rich3", "Rich4", "LA1"];
+    var myGridView = new GridView.builder(
+      itemCount: cohorts.length,
+      gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+      itemBuilder: (BuildContext context, int index) {
+        return new GestureDetector(
+          child: new Card(
+            elevation: 5.0,
+            child: new Container(
+              alignment: Alignment.centerLeft,
+              margin: new EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0),
+              child: new Text(cohorts[index]),
+            ),
           ),
-        ),
-      ),
-    );
-  }
-}
+          onTap: () {
+             
+            // showDialog(
+            //  barrierDismissible: false,
+            //  context: context,
+            //  child: new CupertinoAlertDialog(
+            //    title: new Column(
+            //      children: <Widget>[
+            //        new Text("Cohorts"),
+            //        new Icon(
+            //          Icons.favorite,
+            //          color:Colors.red,
+            //       ),
+            //     ],
+            //   ).
+            //   content: new Text( cohorts[index]),
+            //   actions: <Widget>[
+            //     new FlatButton(
+            //       onPressed: () {
+            //         Navigator.of(context).pop();
+            //       },
+            //       child: new Text("Ok"))
+            //   ],
+            // ));
+           
+         },
+       );
 
-class TaskTile extends StatefulWidget {
-  final bool isCompleted;
-  final String task;
-  final String documentId;
-  TaskTile(this.isCompleted, this.task, this.documentId);
-
-  @override
-  _TaskTileState createState() => _TaskTileState();
-}
-
-class _TaskTileState extends State<TaskTile> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: (){
-
-              Map<String,dynamic> taskMap = {
-                "isCompleted" : !widget.isCompleted
-              };
-
-              DatabaseServices().updateTask(uId, taskMap, widget.documentId);
-            },
-            child: Container(
-              width: 24,
-              height: 24,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black87, width: 1),
-                borderRadius: BorderRadius.circular(30)
+     },
+   );
+   
+   //final title = 'Grid List'; 
+   return Container ( 
+            decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/HGP_PrimaryLogo_Yellow.png"),
+              fit: BoxFit.cover
               ),
-              child:
-              widget.isCompleted ?
-              Icon(Icons.check, color: Colors.green,) : Container(),
             ),
-          ),
+           
+   
+   child: Scaffold(
+      appBar:  AppBar(
+        leading: IconButton(icon: Icon(Icons.menu), onPressed: (){
 
-          SizedBox(width: 8,),
-          Text(
-            widget.task,
-            style: TextStyle(
-              color: widget.isCompleted ? Colors.black87 :
-                  Colors.black87.withOpacity(0.7) ,
-              fontSize: 17,
-              decoration: widget.isCompleted ?
-                  TextDecoration.lineThrough :
-                  TextDecoration.none
-            ),
-          ),
+        }),
+      title: Text("Welcome Geniuses To Summer 2020!"),
+      actions: <Widget> [
+        IconButton(icon: Icon(
+          FontAwesomeIcons.calendarAlt), onPressed: () {
 
-          Spacer(),
-
-          GestureDetector(
-            onTap: (){
-              DatabaseServices().deleteTask(uId, widget.documentId);
-            },
-            child: Icon(
-              Icons.close, size: 13, color: Colors.black87.withOpacity(0.7)
-            ),
-          )
+        }),
         ],
       ),
-    );
+      body: 
+      myGridView,
+         
+          ),
+     );    
+    
   }
+
+void main() {
+  runApp(MyApp());
+  Container ( 
+            decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/PrimaryLogo_Yellow.png"),
+              fit: BoxFit.cover
+              ),
+            ),
+           );
 }
+}
+//       (
+//         crossAxisCount: 2,
+//         padding: EdgeInsets.all(16),
+//         childAspectRatio: 0.9,
+//         crossAxisSpacing: 10.0,
+//         mainAxisSpacing: 10.0,
+ 
+            
+        
+
+//       Widget myGridItemes(String gridName,
+//             String gridimage, 
+//             int color1, 
+//             int color2){
+//         return Container(
+//           decoration: new BoxDecoration(
+//               borderRadius: BorderRadius.circular(24.0),
+//               gradient: new LinearGradient(
+//               colors: [
+//                 Color(color1),
+//                 Color(color2),
+//                ],
+//                begin: Alignment.centerLeft,
+//                end: new Alignment(1, 1),
+//               ),
+//               ),
+
+// //       child: Stack(
+//         children: <Widget>[
+//           Opacity(
+//             opacity: 0.3,
+//             child:Container(
+//               decoration: new BoxDecoration(
+//                 borderRadius: BorderRadius.circular(24.0),
+//                 image: DecorationImage(
+//                 image: new NetworkImage(
+//                   gridimage),
+//                   fit: BoxFit.fill,
+//                   ),
+//             ),
+//           ),
+//         ),
+//         Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: <Widget>[
+//             Container(child:Row(
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               children: <Widget>[
+//                 Container(child:Text("Job",style:
+//                   TextStyle(color: Colors.white, fontSize: 16),)),
+//                   //Sizedbox:(witdh:10.0),
+//                 Container(child:Icon(
+//                   FontAwesomeIcons.compass,color: Colors.white)),
+//                   //Sizedbox:(witdh:10.0),
+//                 Container(child:Text("Guide",style:
+//                   TextStyle(color: Colors.white, fontSize: 16),)),
+//                   //Sizedbox:(witdh:10.0)
+//               ],
+//                 )),
+              
+//           Padding(
+//             padding: const EdgeInsets.only(left:16.0),
+//             child:Text(gridName, style: TextStyle(color: Colors.white,
+//             fontSize:20,
+//             fontWeight: FontWeight.bold),)),
+//             ],),
+//         ],
+//         ),
+//       );
+// }
+ 
 

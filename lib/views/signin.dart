@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todowebappp/services/auth.dart';
-import 'package:todowebappp/widgets/widget.dart';
+import 'package:Summer2020/services/auth.dart';
+import 'package:Summer2020/widgets/widget.dart';
 
 class SingIn extends StatefulWidget {
   @override
@@ -14,15 +14,15 @@ class _SingInState extends State<SingIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Widgets().mainAppar(),
+      appBar: Widgets().mainApp(),
       body: Container(
         alignment: Alignment.center,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset("assets/images/todos.png", height: 250,),
+            Image.asset("assets/images/HGPAssets_PrimaryLogo_Yellow.png", height: 250,),
             SizedBox(height: 8,),
-            Text("ToDoApp For Awesome People", style: TextStyle(
+            Text("Welcome Geniuses to Summer 2020!", style: TextStyle(
               fontSize: 17
             ),),
             SizedBox(height: 16,),

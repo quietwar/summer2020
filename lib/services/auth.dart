@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:todowebappp/services/database.dart';
-import 'package:todowebappp/views/home.dart';
+import 'package:Summer2020/services/database.dart';
+import 'package:Summer2020/views/homepage.dart';
 
 class AuthService {
   Future<FirebaseUser> signInWithGoogle(BuildContext context) async {
@@ -35,9 +35,9 @@ class AuthService {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => Home(
-                    userEmail: userDetails.email,
-                    username: userDetails.displayName,
+              builder: (context) => HomePage(
+                    // userEmail: userDetails.email,
+                    // username: userDetails.displayName,
                   )));
     }
 

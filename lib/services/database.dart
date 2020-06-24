@@ -27,7 +27,7 @@ class DatabaseServices{
   }
 
   getTasks(String userId) async {
-    return await Firestore.instance.collection("users")
+    return  Firestore.instance.collection("users")
         .document(userId)
         .collection("tasks")
         .snapshots();

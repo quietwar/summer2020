@@ -1,4 +1,4 @@
-package com.theindianappguy.todowebappp;
+package com.hgp.summer2020;
 
 import io.flutter.embedding.android.FlutterActivity;
 
