@@ -1,17 +1,17 @@
 import 'package:Summer2020/helper_functions/helper_functions.dart';
-import 'package:Summer2020/services/database.dart';
+//import 'package:Summer2020/services/database.dart';
 //import 'package:Summer2020/widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //import 'package:Summer2020/views/myappbar.dart';
 
 class HomePage extends StatefulWidget {
-  static const String id = 'homePage_screen';
+  static const String id = 'homePage';
 
-  
    HomePage({this.username, this.userEmail});
   String username;
    final String userEmail;
+   @override
   _HomePageState createState() => _HomePageState();
 }
 String uId = "gnpH1r191xOYLMIsIZgvxNSx5X53";
@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   
   Stream taskStream;
 
-   DatabaseServices databaseServices = new DatabaseServices();
+   //DatabaseServices databaseServices = new DatabaseServices();
 
    String date;
   TextEditingController taskEdittingControler = new TextEditingController();
@@ -32,12 +32,11 @@ class _HomePageState extends State<HomePage> {
      var now = DateTime.now();
       date = "${HelperFunctions.getWeek(now.weekday)} ${HelperFunctions.getYear(now.month)} ${now.day}";
 
-      databaseServices.getTasks(uId).then((val){
+      //databaseServices.getTasks(uId).then((val){
 
-        taskStream = val;
+        //taskStream = val;
         setState(() {});
-
-      });
+ 
 
       super.initState();
     }

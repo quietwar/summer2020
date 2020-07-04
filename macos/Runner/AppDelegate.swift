@@ -1,19 +1,25 @@
-// import Cocoa
-// import FlutterMacOS
+#include "AppDelegate.h"
+#include "GeneratedPluginRegistrant.h"
 
-// @NSApplicationMain
-// class AppDelegate: FlutterAppDelegate {
-//   override func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-//     return true
-//   }
-// }
 @import UIKit;
 @import Firebase;
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application
-    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  [FIRApp configure];
-  return YES;
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+[FIRApp configure];
+return YES;
 }
+
+@end
+// @import UIKit;
+// @import Firebase;
+
+// @implementation AppDelegate
+
+// - (BOOL)application:(UIApplication *)application
+//     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+//   [FIRApp configure];
+//   return YES;
+// }

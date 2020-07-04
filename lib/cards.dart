@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 //import 'package:Summer2020/widgets/widget.dart';
 
 class CardData extends StatefulWidget{
-   @override
    String imageUrl;
   CardDataState createState() => CardDataState(imageUrl: this.imageUrl,
     

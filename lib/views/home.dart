@@ -1,7 +1,7 @@
 // import 'dart:js';
 import 'package:Summer2020/helper_functions/helper_functions.dart';
-import 'package:Summer2020/services/database.dart';
-import 'package:Summer2020/views/homepage.dart';
+// import 'package:Summer2020/services/database.dart';
+// import 'package:Summer2020/views/homepage.dart';
 // import 'package:Summer2020/widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,10 +30,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  @override
-//   Stream taskStream;
+  //   Stream taskStream;
 
-   DatabaseServices databaseServices = new DatabaseServices();
+   //DatabaseServices databaseServices = new DatabaseServices();
 
   String date;
   TextEditingController taskEdittingControler = new TextEditingController();
@@ -46,14 +45,14 @@ class _HomeState extends State<Home> {
     var now = DateTime.now();
     date = "${HelperFunctions.getWeek(now.weekday)} ${HelperFunctions.getYear(now.month)} ${now.day}";
 
-    databaseServices.getTasks(uId).then((val){
+    //databaseServices.getTasks(uId).then((val){
 
      // taskStream = val;
       setState(() {});
 
-    });
+    
 
-    super.initState();
+     super.initState();
   }
    
    

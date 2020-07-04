@@ -3,9 +3,10 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "index.html": "fea23ce5a311f2cbd12ff91177ca31db",
-"/": "fea23ce5a311f2cbd12ff91177ca31db",
-"main.dart.js": "13b173c18033a5e499e4147d1edab532",
+  "index.html": "5b762c09437b4a13ff25f15d71880279",
+"/": "5b762c09437b4a13ff25f15d71880279",
+"main.dart.js": "ed6a93861c267f08456a86e7d7b139be",
+"favico.ico": "48238c9ea925f6ce7879883108a79660",
 "icons/HGPAssets_Emblem_Yellow.zip": "79ba3a841408a8d3bc76567ca625291d",
 "icons/HGPAssets_Emblem_Black.png": "7f31b497b977727e00c6a0adf13ca02b",
 "icons/HGPAssets_Emblem_Yellow/ios/iTunesArtwork@1x.png": "04253397f1478bebe80167ac7993b3df",
@@ -51,10 +52,9 @@ const RESOURCES = {
 "icons/HGPAssets_Emblem_Yellow/watchkit/AppIcon.appiconset/Icon-24@2x.png": "479965f1f2ce420a5dcf3014d418e690",
 "icons/blue_logo.jpg": "3a53299f59e83f83279ec9496e65c3ad",
 "icons/HGPAssets_Emblem_Yellow.png": "572017c751a354159abf6117e7b9759c",
-"icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"manifest.json": "c01abf596bd6e0b08558ea799e01aab9",
-"assets/AssetManifest.json": "571134fa412421ea5db0251e934e302e",
-"assets/NOTICES": "92aaa37801b69f063e443cd898eb7c1b",
+"manifest.json": "f7b135e9078212a7edb58082f107a314",
+"assets/AssetManifest.json": "6517273fb264445eed2c8249488a0b54",
+"assets/NOTICES": "bbfaec330bb7cea47f39d4848210017f",
 "assets/FontManifest.json": "eebdd209bff430798414b3d51f97b249",
 "assets/packages/flutter_auth_buttons/graphics/apple_logo_black.png": "9beaf6539a3cff54ae8da57e86af4ad4",
 "assets/packages/flutter_auth_buttons/graphics/google-logo.png": "6937ba6a7d2de8aa07701225859ae402",
@@ -73,7 +73,7 @@ const RESOURCES = {
 "assets/assets/images/HGP_Yellow_small.png": "b4f5880e78c40e1281370a1ed993c55d",
 "assets/assets/images/hgplogo.png": "b85e53eda3194b9d216e51a0e06c0863",
 "assets/assets/images/HGPAssets_Emblem_Black.png": "988e24809586977a6816c9961ee9e3b3",
-"assets/assets/images/HGP_PrimaryLogo_Yellow.png": "d3f0932f20f348fa4a40725fd0aac7f1",
+"assets/assets/images/hgp_primarylogo_yellow.png": "d3f0932f20f348fa4a40725fd0aac7f1",
 "assets/assets/images/twitter-bird.png": "2570bf3f08a1e74d1c5946f13c2e7199",
 "assets/assets/images/instagram-social-network-logo-of-photo-camera.png": "ef1b6b70f2780c9001d2a25ed85c8450",
 "assets/assets/images/techslam.jpeg": "4172db09ebb53185420737aff167af9d",
@@ -102,7 +102,7 @@ const CORE = [
   "/",
 "main.dart.js",
 "index.html",
-"assets/LICENSE",
+"assets/NOTICES",
 "assets/AssetManifest.json",
 "assets/FontManifest.json"];
 
@@ -207,7 +207,7 @@ self.addEventListener("fetch", (event) => {
 self.addEventListener('message', (event) => {
   // SkipWaiting can be used to immediately activate a waiting service worker.
   // This will also require a page refresh triggered by the main worker.
-  if (event.message == 'skipWaiting') {
+  if (event.data == 'skipWaiting') {
     return self.skipWaiting();
   }
 
@@ -231,8 +231,8 @@ async function downloadOffline() {
   }
   for (var resourceKey in Object.keys(RESOURCES)) {
     if (!currentContent[resourceKey]) {
-      resources.add(resourceKey);
+      resources.push(resourceKey);
     }
   }
-  return Cache.addAll(resources);
+  return contentCache.addAll(resources);
 }

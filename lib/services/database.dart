@@ -1,47 +1,47 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 
-class DatabaseServices{
+// class DatabaseServices{
   
-  uploadUserInfo(String userId, Map userMap){
-    Firestore.instance.collection("users")
-        .document(userId)
-        .setData(userMap)
-        .catchError((e){
-          print(e.toString());
-    });
-  }
+//   uploadUserInfo(String userId, Map userMap){
+//     Firestore.instance.collection("users")
+//         .document(userId)
+//         .setData(userMap)
+//         .catchError((e){
+//           print(e.toString());
+//     });
+//   }
 
-  updateTask(String userId, Map taskMap, String documentId){
-    Firestore.instance.collection("users")
-        .document(userId)
-        .collection("tasks")
-        .document(documentId)
-        .setData(taskMap, merge: true);
-  }
+//   updateTask(String userId, Map taskMap, String documentId){
+//     Firestore.instance.collection("users")
+//         .document(userId)
+//         .collection("tasks")
+//         .document(documentId)
+//         .setData(taskMap, merge: true);
+//   }
 
-  createTask(String userId, Map taskMap){
-    Firestore.instance.collection("users")
-        .document(userId)
-        .collection("tasks")
-        .add(taskMap);
-  }
+//   createTask(String userId, Map taskMap){
+//     Firestore.instance.collection("users")
+//         .document(userId)
+//         .collection("tasks")
+//         .add(taskMap);
+//   }
 
-  getTasks(String userId) async {
-    return  Firestore.instance.collection("users")
-        .document(userId)
-        .collection("tasks")
-        .snapshots();
-  }
+//   getTasks(String userId) async {
+//     return  Firestore.instance.collection("users")
+//         .document(userId)
+//         .collection("tasks")
+//         .snapshots();
+//   }
 
-  deleteTask(String userId,String documentId){
-    Firestore.instance.collection("users")
-        .document(userId)
-        .collection("tasks")
-        .document(documentId)
-        .delete()
-        .catchError((e){
-          print(e.toString());
-        });
-  }
+//   deleteTask(String userId,String documentId){
+//     Firestore.instance.collection("users")
+//         .document(userId)
+//         .collection("tasks")
+//         .document(documentId)
+//         .delete()
+//         .catchError((e){
+//           print(e.toString());
+//         });
+//   }
   
-}
+// }

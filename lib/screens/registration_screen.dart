@@ -1,8 +1,9 @@
 import 'package:Summer2020/components/rounded_button.dart';
 import 'package:Summer2020/constants.dart';
-import 'package:Summer2020/screens/chat_screen.dart';
+//import 'package:Summer2020/screens/chat_screen.dart';
+//import 'package:Summer2020/views/homepage.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -12,7 +13,7 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  final _auth = FirebaseAuth.instance;
+  //final _auth = FirebaseAuth.instance;
 
   bool showSpinner = false;
   String email;
@@ -21,7 +22,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red.withOpacity(0.0),
+      backgroundColor: Colors.black,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner, 
         child: Padding(
@@ -80,12 +81,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   showSpinner = true;
                 });
               try {
-                final newUser = await _auth.createUserWithEmailAndPassword(
-                  email: email, password: password);
-                if (newUser != null) {
-                  Navigator.pushNamed(context, ChatScreen.id);
-                }
-                setState(() {
+                // final newUser = await _auth.createUserWithEmailAndPassword(
+                //   email: email, password: password);
+                // if (newUser != null) {
+                //   Navigator.pushNamed(context, HomePage.id);
+                // }
+                 setState(() {
                   showSpinner = false;
                 });
               } catch (e) {

@@ -1,7 +1,8 @@
 import 'package:Summer2020/components/rounded_button.dart';
 import 'package:Summer2020/constants.dart';
-import 'package:Summer2020/screens/chat_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:Summer2020/screens/chat_screen.dart';
+//import 'package:Summer2020/views/homepage.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 //import 'package:Summer2020/widgets/google_sign_in_button.dart';
@@ -14,7 +15,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool showSpinner = false;
-  final _auth = FirebaseAuth.instance;
+  //final _auth = FirebaseAuth.instance;
   String email;
   String password;
   
@@ -76,11 +77,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   showSpinner = true;
                 });
               try {
-                final user = await _auth.signInWithEmailAndPassword(
-                  email: email, password: password);
-                if (user != null) {
-                  Navigator.pushNamed(context, ChatScreen.id);
-                }
+                //final user = await _auth.signInWithEmailAndPassword(
+                  //email: email, password: password);
+                // if (user != null) {
+                //   Navigator.pushNamed(context, HomePage.id);
+                // }
                 setState(() {
                   showSpinner = false;
                 });
