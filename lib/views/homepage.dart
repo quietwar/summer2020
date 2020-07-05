@@ -1,9 +1,13 @@
 import 'package:Summer2020/helper_functions/helper_functions.dart';
+import 'package:Summer2020/pages/la1.dart';
+import 'package:Summer2020/pages/oak7.dart';
+import 'package:Summer2020/pages/oak8.dart';
+import 'package:Summer2020/pages/rich3.dart';
+import 'package:Summer2020/pages/rich4.dart';
+import 'package:flutter/cupertino.dart';
 //import 'package:Summer2020/services/database.dart';
-//import 'package:Summer2020/widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-//import 'package:Summer2020/views/myappbar.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'homePage';
@@ -41,327 +45,308 @@ class _HomePageState extends State<HomePage> {
       super.initState();
     }
     
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: 
-      Column(
-        children: [
-          
-          Image.asset('https://hiddengeniusproject.org',
-            ///images.unsplash.com/photo-1496254738104-fc408389bbac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-            width: 600,
-            height: 240,
-            fit: BoxFit.cover,
-            
-          ),
-          _titleContainer(),
-          SizedBox(height: 10.0),
-          _detailsContainer(),
-          _chipContainer(),
-          SizedBox(height: 30.0),
-          _listView(),
-          _nextButton(),
-        ],
+    return  Scaffold(
+      appBar: AppBar(
+        leading: IconButton(icon: Icon(Icons.menu), onPressed: () {
+        }),
+      title: Text('Welcome to Summer 2020'),
+      actions: <Widget>[IconButton(icon: Icon(FontAwesomeIcons.calendarAlt), onPressed: () {
+        }),
+       ],
       ),
-    );
-  }
-
-  Widget _listView(){
-    // var cohorts = ["Oak7", "Oak8", "Rich3", "Rich4", "LA1"];
-    // var myGridView = new GridView.builder(
-    //   itemCount: cohorts.length,
-    //   gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-    //   itemBuilder: (BuildContext context, int index) {
-    //     return new GestureDetector(
-    //       child: new Card(
-    //         elevation: 5.0,
-    //         child: new Container(
-    //           alignment: Alignment.centerLeft,
-    //           margin: new EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0),
-    //           child: new Text(cohorts[index]),
-    //         ),
-    //       ),
-    //       onTap: () {
-             
-    //         showDialog(
-    //          barrierDismissible: false,
-    //          context: context,
-    //          child: new CupertinoAlertDialog(
-    //            title: new Column(
-    //              children: <Widget>[
-    //                new Text("Cohorts"),
-    //                new Icon(
-    //                  Icons.favorite,
-    //                  color:Colors.red,
-    //               ),
-    //             ],
-    //           ).
-    //           content: new Text( cohorts[index]),
-    //           actions: <Widget>[
-    //             new FlatButton(
-    //               onPressed: () {
-    //                 Navigator.of(context).pop();
-    //               },
-    //               child: new Text("Ok"))
-    //           ],
-    //         ));
-    return  Container(
-      margin: EdgeInsets.symmetric(vertical: 50.0),
-      height: 100.0,
-      child: ListView(
-        scrollDirection: Axis.vertical,
+      body: GridView.count(
+        crossAxisCount: 1,
+        childAspectRatio: 3.0,
         children: <Widget>[
-          Container(
-            width: 160.0,
-            decoration: BoxDecoration(
-              gradient: new LinearGradient(
-                colors: [
-                  const Color(0xFF5032b6),
-                  const Color(0xFFb765d3),
-                ],
-                begin: Alignment.centerRight,
-                end: new Alignment(-1.0, -1.0),
-              ),
-            ),
-          ),
-          SizedBox(width: 50.0),
-          Container(
-            width: 160.0,
-            decoration: BoxDecoration(
-              gradient: new LinearGradient(
-                colors: [
-                  const Color(0xffebac38),
-                  const Color(0xffde4d2a),
-
-                ],
-                begin: Alignment.centerRight,
-                end: new Alignment(-1.0, -1.0),
-              ),
-            ),
-          ),
-          SizedBox(width: 50.0),
-          Container(
-            width: 160.0,
-            decoration: BoxDecoration(
-              gradient: new LinearGradient(
-                colors: [
-                  const Color(0xff662d8c),
-                  const Color(0xffed1e79),
-                ],
-                begin: Alignment.centerRight,
-                end: new Alignment(-1.0, -1.0),
-              ),
-            ),
-          ),
-          SizedBox(width: 50.0),
-          Container(
-            width: 160.0,
-            decoration: BoxDecoration(
-              gradient: new LinearGradient(
-                colors: [
-                  const Color(0xFF1CD8D2),
-                  const Color(0xFF93EDC7),
-                ],
-                begin: Alignment.centerRight,
-                end: new Alignment(-1.0, -1.0),
-              ),
-            ),
-          ),
-        ], //gridDelegate: null,
-      ),
-    );
-  }
-  Widget _nextButton() {
-    return Container(child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[Text ("$date"),
-        Container(
-          child: myButtons("Prev", 0xFF975efe, 0xFF448afe),),
-        Container(child: myButtons("Next", 0xFF975efe, 0xFF448afe),)
-      ],));
-  }
-
-  Widget _titleContainer() {
-    return Container(child: Text("My Day", style:TextStyle(
-        color: Colors.black,
-        fontWeight: FontWeight.w500,
-        fontSize: 20.0,
-        
-    ),));
-  }
-
-  Widget _detailsContainer() {
-    return Container(child: Text(
-      'Geniuses, please locate and select your cohort to see your days schedule!',style:TextStyle(
-        color: Colors.black,
-        fontWeight: FontWeight.w300,
-        fontSize: 18.0
-    ),));
-  }
-
-
-  RaisedGradientChip myChips(String chipName, int color1, int color2) {
-    return RaisedGradientChip(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(left:8.0),
-              child: Container(child: Text(
-                chipName,
-                style: TextStyle(color: Colors.white),
-              ),),
-            ),
-            Container(child: Container(child: IconButton(
-                icon: Icon(
-                  FontAwesomeIcons.times, color: Colors.white, size: 15.0,),
-                onPressed: () {
-                  //
-                }),),),
-          ],),
-        gradient: LinearGradient(
-          colors: <Color>[Color(color1), Color(color2)],
-        ),
-        onPressed: () {
-          print('button clicked');
-        }
-    );
-  }
-
-  RaisedGradientButton myButtons(String chipName, int color1, int color2) {
-    return RaisedGradientButton(
-        child: Text(
-          chipName,
-          style: TextStyle(color: Colors.white),
-        ),
-        gradient: LinearGradient(
-          colors: <Color>[Color(color1), Color(color2)],
-        ),
-        onPressed: () {
-          print('button clicked');
-        }
-    );
-  }
-
-  Widget _chipContainer() {
-    return Column(
-      children: <Widget>[
-        SizedBox(height: 40.0),
-        Wrap(
-          direction: Axis.vertical,
-          //crossAxisAlignment: 2.0,
-          spacing: 10.0,
-          runSpacing: 5.0,
-          children: <Widget>[
-            myChips("Oak7", 0xFF02b5e0, 0xFF02cabd),
-            myChips("Oak8", 0xFF965ffe, 0xFF3c8efe),
-            myChips("LA1", 0xFF07dfaf, 0xFF47e544),
-            myChips("Rich3", 0xFFffda00, 0xFFffa500),
-            myChips("Rich4", 0xFFffa15b, 0xFFfe6075),
+            hgpCohorts("hgpLa1", "assets/images/isiahTeaching.jpg", 0xFF02b5e0, 0xFF02cabd),
+            hgpCohorts("hgpOak7", "assets/images/allCohorts17.jpg", 0xFF965ffe, 0xFF3c8efe),
+            hgpCohorts("hgpOak8", "assets/images/malik_spiderman.jpg", 0xFF07dfaf, 0xFF47e544),
+            hgpCohorts("hgpRich3", "assets/images/Rich8.1.png", 0xFFffda00, 0xFFffa500),
+            hgpCohorts("hgpRich4", "assets/images/techslam.JPG", 0xFFffa15b, 0xFFfe6075),
           ],
-        ),
+        )
+      );
+    }
+      
 
-      ],);
-  }
-
-}
-
-class RaisedGradientButton extends StatelessWidget {
-  final Widget child;
-  final Gradient gradient;
-  final double width;
-  final double height;
-  final Function onPressed;
-
-  const RaisedGradientButton({
-    Key key,
-    @required this.child,
-    this.gradient,
-    this.width = double.infinity,
-    this.height = 50.0,
-    this.onPressed,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
+  Widget hgpCohorts(String gridName, String gridimage, int color1, int color2,) {
     return Container(
-      width: 100.0,
-      height: 50.0,
-      decoration: BoxDecoration(gradient: gradient, boxShadow: [
-        BoxShadow(
-          color: Colors.grey[500],
-          offset: Offset(0.0, 1.5),
-          blurRadius: 1.5,
+      decoration: BoxDecoration(
+        gradient: new LinearGradient(
+            colors: [
+              Color(color1),
+              Color(color2),
+            ],
+            begin: Alignment.centerLeft,
+            end: new Alignment(1.0, 1.0),
         ),
-      ]),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-            onTap: onPressed,
-            child: Center(
-              child: child,
-            )),
       ),
-    );
-  }
-}
-
-class RaisedGradientChip extends StatelessWidget {
-  final Widget child;
-  final Gradient gradient;
-  final double width;
-  final double height;
-  final Function onPressed;
-
-  const RaisedGradientChip({
-    Key key,
-    @required this.child,
-    this.gradient,
-    this.width = double.infinity,
-    this.height = 50.0,
-    this.onPressed,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100.0,
-      height: 30.0,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(24.0),
-          gradient: gradient,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey[500],
-              offset: Offset(0.0, 1.5),
-              blurRadius: 1.5,
+      child: Stack(
+        children: <Widget>[
+          Opacity(
+            opacity: 0.3,
+            child: Container(
+              decoration: new BoxDecoration(
+                image: DecorationImage(
+                  image: new NetworkImage(gridimage),
+                  fit: BoxFit.fill,
+                ),
+              ),
             ),
-          ]),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-            onTap: onPressed,
-            child: Center(
-              child: child,
-            )),
-      ),
-    );
-   }
-  }
+          ),
+          Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(child:Row(
+                mainAxisAlignment:MainAxisAlignment.center ,
+                
+                children: <Widget>[
+                  Container(child:Text("Hgp", style: TextStyle(color: Colors.white, fontSize: 16),)),
+                  SizedBox(width: 10.0),
+                  Container(child: Icon(FontAwesomeIcons.codepen, color: Colors.white,)),
+                  SizedBox(width: 10.0),
+                  Container(child:Text("Cohort", style: TextStyle(color: Colors.white, fontSize: 16),)),
+                ],)),
+                  SizedBox(width: 10.0),
+                Padding(
+                  padding: const EdgeInsets.only(left:16.0),
+                  child:Text(gridName, style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),)),
+                ],)
+            ],
+          ),
+          );
+        }}
+
+
+  //           child: Row:(
+
+
+  //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //             children: <Widget>[
+  //               Expanded(
+  //                 flex: 1,
+  //                 child:Container(child:IconButton(
+  //                     icon: Icon(FontAwesomeIcons.arrowLeft,color: Colors.white,), onPressed: () {
+  //                   //
+  //                 }),),),
+  //               Expanded(
+  //                 flex: 5,
+  //                 child:Container(child:Text('LA1', style:
+  //                 TextStyle(
+  //                     color: Colors.white,
+  //                     fontWeight: FontWeight.w600,
+  //                     fontSize: 28.0
+  //                 ),),),),
+  //               Expanded(
+  //                 flex: 1,
+  //                 child:Container(child:IconButton(
+  //                     icon: Icon(FontAwesomeIcons.search,color: Colors.white,), onPressed: () {
+  //                       Navigator.pushNamed(context, HgpLa1.id);
+  //                   //
+  //                 }),),),
+  //             ],)
+  //       ),
+  //     ),
+  //   );
+  // }
+
+  // Widget _hgpRich4() {
+  //   return Container(
+  //     height: 150.0,
+  //     width: MediaQuery
+  //         .of(context)
+  //         .size
+  //         .width,
+
+  //     decoration: BoxDecoration(
+  //       gradient: LinearGradient(
+  //           colors: [ Color(0xffebac38), Color(0xffde4d2a)],
+  //           begin: Alignment.centerRight,
+  //           end: Alignment(-1.0, -2.0)
+  //       ), //Gradient
+  //     ),
+  //     child: Padding(
+  //       padding: const EdgeInsets.only(top: 16.0),
+  //       child: Center(
+  //           child: Row(
+  //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //             children: <Widget>[
+  //               Expanded(
+  //                 flex: 1,
+  //                 child:Container(child:IconButton(
+  //                     icon: Icon(FontAwesomeIcons.arrowLeft,color: Colors.white,), onPressed: () {
+  //                   //
+  //                 }),),),
+  //               Expanded(
+  //                 flex: 5,
+  //                 child:Container(child:Text('Rich4', style:
+  //                 TextStyle(
+  //                     color: Colors.white,
+  //                     fontWeight: FontWeight.w600,
+  //                     fontSize: 28.0
+  //                 ),),),),
+  //               Expanded(
+  //                 flex: 1,
+  //                 child:Container(child:IconButton(
+  //                     icon: Icon(FontAwesomeIcons.chartLine,color: Colors.white,), onPressed: () {
+  //                       Navigator.pushNamed(context, HgpRich4.id);
+  //                   //
+  //                 }),),),
+  //             ],)
+  //       ),
+  //     ),
+  //   );
+  // }
+
+  // Widget _hgpRich3() {
+  //   return Container(
+  //     height: 150.0,
+  //     width: MediaQuery
+  //         .of(context)
+  //         .size
+  //         .width,
+
+  //     decoration: BoxDecoration(
+  //       gradient: new LinearGradient(
+  //         colors: [
+  //           const Color(0xff662d8c),
+  //           const Color(0xffed1e79),
+  //         ],
+  //         begin: Alignment.centerRight,
+  //         end: new Alignment(-1.0, -1.0),
+  //       ),
+  //     ),
+  //     child: Padding(
+  //       padding: const EdgeInsets.only(top: 16.0),
+  //       child: Center(
+  //           child: Row(
+  //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //             children: <Widget>[
+  //               Expanded(
+  //                 flex: 1,
+  //                 child:Container(child:IconButton(
+  //                     icon: Icon(FontAwesomeIcons.arrowLeft,color: Colors.white,), onPressed: () {
+  //                   //
+  //                 }),),),
+  //               Expanded(
+  //                 flex: 5,
+  //                 child:Container(child:Text('Rich3', style:
+  //                 TextStyle(
+  //                     color: Colors.white,
+  //                     fontWeight: FontWeight.w600,
+  //                     fontSize: 28.0
+  //                 ),),),),
+  //               Expanded(
+  //                 flex: 1,
+  //                 child:Container(child:IconButton(
+  //                     icon: Icon(FontAwesomeIcons.cartPlus,color: Colors.white,), onPressed: () {
+  //                       Navigator.pushNamed(context, HgpRich3.id);
+  //                   //
+  //                 }),),),
+  //             ],)
+  //       ),
+  //     ),
+  //   );
+  // }
+
+  // Widget _hgpOak7() {
+  //   return Container(
+  //     height: 150.0,
+  //     width: MediaQuery
+  //         .of(context)
+  //         .size
+  //         .width,
+
+  //     decoration: BoxDecoration(
+  //       gradient: LinearGradient(
+  //           colors: [ Color(0xFF5032b6), Color(0xFFb765d3)],
+  //           begin: Alignment.centerRight,
+  //           end: Alignment(-1.0, -2.0)
+  //       ), //Gradient
+  //     ),
+  //     child: Padding(
+  //       padding: const EdgeInsets.only(top: 16.0),
+  //       child: Center(
+  //           child: Row(
+  //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //             children: <Widget>[
+  //               Expanded(
+  //                 flex: 1,
+  //                 child:Container(child:IconButton(
+  //                     icon: Icon(FontAwesomeIcons.arrowLeft,color: Colors.white,), onPressed: () {
+  //                   //
+  //                 }),),),
+  //               Expanded(
+  //                 flex: 5,
+  //                 child:Container(child:Text('Oak7', style:
+  //                 TextStyle(
+  //                     color: Colors.white,
+  //                     fontWeight: FontWeight.w600,
+  //                     fontSize: 28.0
+  //                 ),),),),
+  //               Expanded(
+  //                 flex: 1,
+  //                 child:Container(child:IconButton(
+  //                     icon: Icon(FontAwesomeIcons.chartLine,color: Colors.white,), onPressed: () {
+  //                       Navigator.pushNamed(context, HgpOak7.id);
+  //                   //
+  //                 }),),),
+  //             ],)
+  //       ),
+  //     ),
+  //   );
+  // }
+  
+  // Widget _hgpOak8() {
+  //   return Container(
+  //     height: 150.0,
+  //     width: MediaQuery
+  //         .of(context)
+  //         .size
+  //         .width,
+
+  //     decoration: BoxDecoration(
+  //       gradient: LinearGradient(
+  //           colors: [ Color(0xFF1CD8D2), Color(0xFF93EDC7)],
+  //           begin: Alignment.centerRight,
+  //           end: Alignment(-1.0, -2.0)
+  //       ), //Gradient
+  //     ),
+  //     child: Padding(
+  //       padding: const EdgeInsets.only(top: 16.0),
+  //       child: Center(
+  //           child: Row(
+  //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //             children: <Widget>[
+  //               Expanded(
+  //                 flex: 1,
+  //                 child:Container(child:IconButton(
+  //                     icon: Icon(FontAwesomeIcons.home,color: Colors.white,), onPressed: () {
+  //                       Navigator.pop(context);
+  //                   //
+  //                 }),),),
+  //               Expanded(
+  //                 flex: 5,
+  //                 child:Container(child:Text('Oak8', style:
+  //                 TextStyle(
+  //                     color: Colors.white,
+  //                     fontWeight: FontWeight.w600,
+  //                     fontSize: 28.0
+  //                 ),),),),
+  //               Expanded(
+  //                 flex: 1,
+  //                 child:Container(child:IconButton(
+  //                     icon: Icon(FontAwesomeIcons.chartLine,color: Colors.white,), onPressed: () {
+  //                       Navigator.pushNamed(context, HgpOak8.id);
+  //                   //
+  //                 }),),),
+  //             ],)
+  //       ),
+  //     ),
+  //   );
+ // }}
 
   
-
-
- 
-
-          // GestureDetector(
-          //   onTap: (){
-          //     DatabaseServices().deleteTask(uId, widget.documentId);
-          //   },
-          //   child: Icon(
-          //     Icons.close, size: 13, color: Colors.black87.withOpacity(0.7)
-          //   ),
-          // )
-  
-  
-
 
