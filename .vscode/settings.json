@@ -15,7 +15,8 @@
         "predeploy",
         "pubsub",
         "serviceworker",
-        "signin"
+        "signin",
+        "uuid"
     ],
     "git.ignoreLimitWarning": true
 }

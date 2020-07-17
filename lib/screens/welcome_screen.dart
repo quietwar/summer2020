@@ -13,33 +13,42 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen>{
+//class _WelcomeScreenState extends State<WelcomeScreen>{
   bool showSpinner = false;
 
   
-    //with SingleTickerProviderStateMixin 
-  // AnimationController controller;
-  // Animation animation;
+  class _WelcomeScreenState extends State<WelcomeScreen>with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  Animation animation;
 
-  // @override
-  // void initState() {
-  //   super.initState();
+  @override
+  void initState() {
+    super.initState();
 
-  //   controller =
-  //       AnimationController(duration: Duration(seconds: 1), vsync: this);
-  //   animation = ColorTween(begin: Colors.white, end: Colors.amber)
-  //       .animate(controller);
-  //   controller.forward();
-  //   controller.addListener(() {
-  //     setState(() {});
-  //   });
-  // }
+    controller =
+        AnimationController(duration: Duration(seconds: 1), vsync: this);
+    animation = ColorTween(begin: Colors.white, end: Colors.amber)
+        .animate(controller);
+    controller.forward();
+    controller.addListener(() {
+      setState(() {});
+    });
+  }
 
-  // @override
-  // void dispose() {
-  //   controller.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  //   LiquidCustomProgressIndicator(
+  //   value: 0.2 // Defailts to 0.5.
+  //   valueColor: AlwaysStoppedAnimation(Colors.amber), // Defaults to the current Theme's accentColor.
+  //   backgroundColor: Colors.white, // Defaults to the current Theme's backgroundColor.
+  //   direction: Axis.vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right).
+  //   shapePath: _buildBoatPath(), // A Path object used to draw the shape of the progress indicator.
+  // )
+
 
 
   @override
@@ -50,6 +59,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>{
         inAsyncCall: showSpinner, 
         child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
+        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -58,7 +68,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>{
               child: Hero(tag: 'logo', 
               child: 
               Container(
-                child: Image.asset('images/HGP_Yellow_small.png'),
+                child: Image.asset('assets/images/HGPAssets_Emblem_White.png'),
                 height: 500.0,
                 ),
               ),

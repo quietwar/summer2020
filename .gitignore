@@ -1,0 +1,53 @@
+# Created by .ignore support plugin (hsz.mobi)
+.dart_tool/flutter_build/3765e9e64bd6f671dc9b40c75489dbaa/
+.gitignore
+.gradle/6.1.1/vcsMetadata-1/
+.idea/libraries/Dart_Packages2.xml
+.idea/libraries/Flutter_Plugins2.xml
+android/.idea/caches/
+build/7915d726ec05e175bec59b17acc958d2/
+build/flutter_assets/assets/images/google_logo.png
+build/flutter_assets/packages/flutter_auth_buttons/
+build/flutter_assets/packages/flutter_signin_button/
+build/ios/Debug-iphonesimulator/Runner.app/Frameworks/App.framework/flutter_assets/assets/images/google_logo.png
+build/ios/Debug-iphonesimulator/Runner.app/Frameworks/App.framework/flutter_assets/packages/flutter_signin_button/
+build/ios/Debug-iphonesimulator/Runner.app/Frameworks/path_provider.framework/
+build/ios/Debug-iphonesimulator/path_provider/
+build/ios/iphonesimulator/Runner.app/Frameworks/App.framework/flutter_assets/assets/images/google_logo.png
+build/ios/iphonesimulator/Runner.app/Frameworks/App.framework/flutter_assets/packages/flutter_signin_button/
+build/ios/iphonesimulator/Runner.app/Frameworks/path_provider.framework/
+gen/
+web-start/functions/node_modules/google-auth-library/build/src/auth/credentials 2.js
+web-start/functions/node_modules/google-auth-library/build/src/auth/refreshclient.d 2.ts
+web-start/functions/node_modules/google-auth-library/build/src/crypto/browser/crypto 2.js
+web-start/functions/node_modules/google-auth-library/build/src/crypto/browser/crypto.d 2.ts
+web-start/functions/node_modules/google-auth-library/build/src/crypto/node/crypto.d 2.ts
+web-start/functions/node_modules/google-auto-auth/node_modules/readable-stream/lib/internal/streams/destroy 2.js
+web-start/functions/node_modules/google-proto-files/google/api/servicecontrol/v1/service_controller 2.proto
+web-start/functions/node_modules/google-proto-files/google/appengine/v1/application 2.proto
+web-start/functions/node_modules/google-proto-files/google/appengine/v1/deploy 2.proto
+web-start/functions/node_modules/google-proto-files/google/bigtable/admin/cluster/v1/bigtable_cluster_service 2.proto
+web-start/functions/node_modules/google-proto-files/google/bigtable/admin/cluster/v1/bigtable_cluster_service_messages 2.proto
+web-start/functions/node_modules/google-proto-files/google/bigtable/admin/table/v1/bigtable_table_service_messages 2.proto
+web-start/functions/node_modules/google-proto-files/google/cloud/ml/v1/model_service 2.proto
+web-start/functions/node_modules/google-proto-files/google/cloud/ml/v1/operation_metadata 2.proto
+web-start/functions/node_modules/google-proto-files/google/devtools/build/v1/build_events 2.proto
+web-start/functions/node_modules/google-proto-files/google/devtools/build/v1/build_status 2.proto
+web-start/functions/node_modules/google-proto-files/google/devtools/clouderrorreporting/v1beta1/error_stats_service 2.proto
+web-start/functions/node_modules/google-proto-files/google/devtools/remoteexecution/v1test/remote_execution 2.proto
+web-start/functions/node_modules/google-proto-files/google/genomics/v1/annotations 2.proto
+web-start/functions/node_modules/google-proto-files/google/genomics/v1/cigar 2.proto
+web-start/functions/node_modules/google-proto-files/google/genomics/v1/datasets 2.proto
+web-start/functions/node_modules/google-proto-files/google/genomics/v1/range 2.proto
+web-start/functions/node_modules/google-proto-files/google/genomics/v1alpha2/pipelines 2.proto
+web-start/functions/node_modules/google-proto-files/google/iam/v1/policy 2.proto
+web-start/functions/node_modules/google-proto-files/google/logging/v2/log_entry 2.proto
+web-start/functions/node_modules/google-proto-files/google/logging/v2/logging 2.proto
+web-start/functions/node_modules/google-proto-files/google/spanner/admin/instance/v1/spanner_instance_admin 2.proto
+web-start/functions/node_modules/google-proto-files/google/spanner/v1/mutation 2.proto
+web-start/functions/node_modules/google-proto-files/google/storagetransfer/v1/transfer_types 2.proto
+web-start/functions/node_modules/google-proto-files/google/streetview/publish/v1/streetview_publish 2.proto
+web-start/functions/node_modules/har-validator/node_modules/fast-deep-equal/es6/index 2.js
+web-start/functions/node_modules/hash-stream-validation/node_modules/readable-stream/lib/_stream_passthrough 2.js
+web-start/functions/node_modules/hash-stream-validation/node_modules/readable-stream/lib/_stream_transform 2.js
+web-start/functions/node_modules/readable-stream/lib/internal/streams/stream 2.js

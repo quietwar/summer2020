@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:Summer2020/screens/chat_screen.dart';
+import 'package:Summer2020/views/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart'; 
 
@@ -18,13 +20,15 @@ class _HgpOak8State extends State<HgpOak8>{
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            icon: Icon(FontAwesomeIcons.arrowLeft), onPressed: () {
+            icon: Icon(FontAwesomeIcons.home), onPressed: () {
+              Navigator.pushNamed(context, HomePage.id);
           //
         }),
-        title: Text("Mount Everest"),
+        title: Text("Oak8"),
         actions: <Widget>[
           IconButton(icon: Icon(
-              FontAwesomeIcons.search), onPressed: () {
+              FontAwesomeIcons.cannabis), onPressed: () {
+                Navigator.pushNamed(context, ChatScreen.id);
             //
           }),
         ],
@@ -57,7 +61,7 @@ class _HgpOak8State extends State<HgpOak8>{
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  child: infoCard(context, "Mount Everest"),
+                  child: infoCard(context, "Oakland Cohort 8"),
                 ),
               ],),
             Column(
@@ -159,14 +163,14 @@ class _HgpOak8State extends State<HgpOak8>{
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Text(
-                  "Mount Everest",
+                  "Oak8",
                   style: TextStyle(fontSize: 18.0,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),),
 
               Text(
-                "Mount Everest, known in Nepali as Sagarmatha and in Tibetan as Chomolungma, is Earth's highest mountain above sea level. ",
+                "The Hidden Genius Project trains and mentors, Black Male youth in technology creation, entrepaurship and leasership skills, to trac=nsform their lives and community",
                 style: TextStyle(fontSize: 18.0,color: Colors.white),
               ),
 

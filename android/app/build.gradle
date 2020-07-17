@@ -37,6 +37,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdkVersion 28
+    buildToolsVersion "23.0.1"
 
     lintOptions {
         disable 'InvalidPackage'
@@ -52,9 +53,10 @@ android {
         multiDexEnabled true
     }
     dependencies {
-    implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.google.firebase:firebase-auth:19.3.1'
-    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+        implementation 'com.android.support:multidex:1.0.3'
+        implementation 'com.google.firebase:firebase-auth:19.3.1'
+        implementation 'com.google.android.gms:play-services-auth:18.0.0'
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     }
        signingConfigs {
        release {
@@ -79,3 +81,4 @@ android {
 flutter {
     source '../..'
 }
+//apply plugin: 'com.google.gms.google-services'
